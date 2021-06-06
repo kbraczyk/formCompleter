@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    color: rgb(80, 80, 80);
+    min-width: 400px;
+
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px solid #7002d5;
+}
+
+.header__title {
+    margin-bottom: 10px;
+}
+
+.main__info{
+    text-align: justify;
+    line-height: 17px;
+}
+.main__usage {
+    width:100%;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.footer__icons, i {
+    font-size: 16px;
+}
+
+.footer__icons a {
+    color: rgb(80, 80, 80);
+}
+.footer__icons a:hover{
+    transition: color .3s ease-in-out;
+    color: rgb(61, 99, 223);
+}
