@@ -12,7 +12,7 @@ const actionEnum = Object.freeze({
 
 chrome.contextMenus.removeAll();
 
-const id = chrome.contextMenus.create({
+chrome.contextMenus.create({
     id: parentContextMenuItem,
     title: 'Form Completer',
     contexts: ['editable'],
@@ -30,13 +30,13 @@ Object.keys(actionEnum).forEach((key) => {
     if (actionEnum[key] != 3 && actionEnum[key] != 4) {
         chrome.contextMenus.create({
             id: actionEnum[key].toString() + 'valid',
-            title: 'Poprawne',
+            title: 'Poprawny',
             contexts: ['editable'],
             parentId: actionEnum[key].toString()
         });
         chrome.contextMenus.create({
             id: actionEnum[key].toString() + 'invalid',
-            title: 'Niepoprawne',
+            title: 'Niepoprawny',
             contexts: ['editable'],
             parentId: actionEnum[key].toString()
         });

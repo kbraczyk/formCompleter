@@ -136,11 +136,11 @@ function randChars(letters = false) {
         chars.slice(0, 9)[Math.floor(Math.random() * chars.slice(0, 9).length)];
 }
 
-chrome.runtime.onMessage.addListener((request) => {
+chrome.runtime.onMessage.addListener((message) => {
     const element = document.activeElement;
 
-    const item = request.slice(0, 1);
-    const valid = request.slice(1) == 'valid';
+    const item = message.slice(0, 1);
+    const valid = message.slice(1) == 'valid';
 
     switch (item) {
         case '1':
