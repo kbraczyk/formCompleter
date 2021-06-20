@@ -1,11 +1,14 @@
 const parentContextMenuItem = 'formCompleter';
 
 const actionEnum = Object.freeze({
+    "Imię": 8,
+    "Nazwisko": 9,
     "PESEL": 1,
     "Nr dowodu": 2,
     "NIP": 5,
     "NRB": 6,
     "IBAN": 7,
+    "Losowa wartość": 0,
     "Reset kontrolki": 3,
     "Reset formularza": 4,
 });
@@ -28,6 +31,38 @@ Object.keys(actionEnum).forEach((key) => {
 
     // SubMenus context for parent Items
     if (actionEnum[key] != 3 && actionEnum[key] != 4) {
+        if (actionEnum[key] == 8 || actionEnum[key] == 9) {
+            chrome.contextMenus.create({
+                id: actionEnum[key].toString() + 'valid',
+                title: 'Żeńskie',
+                contexts: ['editable'],
+                parentId: actionEnum[key].toString()
+            });
+            chrome.contextMenus.create({
+                id: actionEnum[key].toString() + 'invalid',
+                title: 'Męskie',
+                contexts: ['editable'],
+                parentId: actionEnum[key].toString()
+            });
+            return;
+        }
+
+        if (actionEnum[key] == 0) {
+            chrome.contextMenus.create({
+                id: actionEnum[key].toString() + 'valid',
+                title: 'Tekstowa',
+                contexts: ['editable'],
+                parentId: actionEnum[key].toString()
+            });
+            chrome.contextMenus.create({
+                id: actionEnum[key].toString() + 'invalid',
+                title: 'Liczbowa',
+                contexts: ['editable'],
+                parentId: actionEnum[key].toString()
+            });
+            return;
+        }
+
         chrome.contextMenus.create({
             id: actionEnum[key].toString() + 'valid',
             title: 'Poprawny',
