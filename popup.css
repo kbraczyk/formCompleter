@@ -20,6 +20,7 @@ body {
     text-align: justify;
     line-height: 17px;
 }
+
 .main__usage {
     width:100%;
 }
@@ -29,14 +30,17 @@ body {
     align-items: center;
     justify-content:space-between;
 }
-.footer__icons, i {
-    font-size: 16px;
+
+.footer__icons {
+    display: flex;
 }
 
-.footer__icons a {
-    color: rgb(80, 80, 80);
+.footer__icons img {
+    width: 16px;
+    cursor: pointer;
+    filter: contrast(.6);
 }
-.footer__icons a:hover{
-    transition: color .3s ease-in-out;
-    color: rgb(61, 99, 223);
+
+.footer__icons a:first-of-type {
+    margin-right: 10px;
 }
