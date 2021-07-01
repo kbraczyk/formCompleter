@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "FormCompleter",
     "description": "Extension helps generate data for form controls",
-    "version": "0.2",
+    "version": "0.3",
     "author": "Krzysztof Brączyk",
     "icons": {
         "16": "./assets/icon.png",
@@ -27,8 +27,6 @@
         }
     ],
     "permissions": [
-        "activeTab",
-        "tabs",
         "contextMenus"
     ],
     "web_accessible_resources": [

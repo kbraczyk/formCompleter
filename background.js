@@ -78,4 +78,6 @@ Object.keys(actionEnum).forEach((key) => {
     }
 })
 
-chrome.contextMenus.onClicked.addListener((info, tab) => chrome.tabs.sendMessage(tab.id, info.menuItemId));
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    chrome.tabs.sendMessage(tab.id, info.menuItemId);
+});
