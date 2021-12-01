@@ -54,6 +54,34 @@ function generateIBAN(el, valid) {
     el.dispatchEvent(new Event('input'));
 }
 
+function randomPhoneNumber(el, valid) {
+    let value = '';
+
+    for (let i = 0; i < 9; i++) {
+        value += randChars(false);
+    }
+
+    el.value = valid ? value : '+48' + value;
+    el.dispatchEvent(new Event('input'));
+}
+
+function randomPostalCode(el, valid) {
+    let value = '';
+
+    for (let i = 0; i < (valid ? 2 : 3); i++) {
+        value += randChars(false);
+    }
+
+    value += '-';
+
+    for (let i = 0; i < 3; i++) {
+        value += randChars(false);
+    }
+
+    el.value = value;
+    el.dispatchEvent(new Event('input'));
+}
+
 function getControlNrbNumber(number) {
     let prefixForPartTwo = number.slice(0, 10) % 97;
     let prefixForPartThree = (prefixForPartTwo + number.slice(10, 20)) % 97;
@@ -151,7 +179,7 @@ function randomValue(element, text) {
     const maxLength = checkMaxLength(element);
 
     if (text) {
-        getDataFromJson('lorem', 'text', false).then(data => {
+        getDataFromJson('lorem', 'name', false).then(data => {
             element.value = maxLength ? data['text'].slice(0, maxLength) : data['text'];
         }).catch(err => console.log(err))
     } else {
@@ -163,6 +191,19 @@ function randomValue(element, text) {
     }
 
     element.dispatchEvent(new Event('input'));
+}
+
+function getCity(element) {
+    const maxLength = checkMaxLength(element);
+
+    getDataFromJson('cities', 'cities', false).then(data => {
+        data = data.cities;
+        data = data.map(d => d.name);
+        data = data && maxLength > 0 ? data.filter(c => c.length <= maxLength) : data;
+        const randomIndex = Math.floor(Math.random() * data.length)
+        element.value = data[randomIndex];
+        element.dispatchEvent(new Event('input'));
+    }).catch(err => console.log(err))
 }
 
 function checkMaxLength(element) {
@@ -210,6 +251,15 @@ chrome.runtime.onMessage.addListener((message) => {
             break;
         case '0':
             randomValue(element, valid);
+            break;
+        case 'p':
+            randomPhoneNumber(element, valid);
+            break;
+        case 'k':
+            randomPostalCode(element, valid);
+            break;
+        case 'c':
+            getCity(element);
             break;
     }
 });

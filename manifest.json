@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "FormCompleter",
     "description": "Extension helps generate data for form controls",
-    "version": "0.3",
+    "version": "0.4",
     "author": "Krzysztof Brączyk",
     "icons": {
         "16": "./assets/icon.png",
@@ -36,7 +36,8 @@
                 "assets/male-surname.json",
                 "assets/female.json",
                 "assets/female-surname.json",
-                "assets/lorem.json"
+                "assets/lorem.json",
+                "assets/cities.json"
             ],
             "matches": [
                 "*://*/*"
